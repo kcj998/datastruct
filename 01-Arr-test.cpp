@@ -1,7 +1,7 @@
 #include "01-Arr.cpp"
 int main()
 {
-    struct Arr arr;
+    struct Arr arr{};
     // 初始化长度为6的数组
     init_arr(&arr, 6);
 

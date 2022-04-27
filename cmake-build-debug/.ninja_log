@@ -1,0 +1,6 @@
+# ninja log v5
+2	261	6727282766937888	build.ninja	e4e89d7f176fde1a
+0	151	6727282768882488	CMakeFiles/datastruct.dir/01-Arr.cpp.obj	20437bb3ec2c810f
+6	154	6727282768891163	CMakeFiles/datastruct.dir/01-Arr-test.cpp.obj	56b3c41a3be957f
+2	137	6727284564192405	CMakeFiles/datastruct.dir/01-Arr-test.cpp.obj	56b3c41a3be957f
+11	138	6727284564201008	CMakeFiles/datastruct.dir/01-Arr.cpp.obj	20437bb3ec2c810f

@@ -1,6 +1,5 @@
-#include <stdio.h>
+#include <cstdio>
 #include <malloc.h>
-#include <stdlib.h>
 struct Arr
 {
     int *pBase;//定义第一个元素的地址
@@ -12,7 +11,7 @@ void init_arr(struct Arr *pArr, int length)
 {
     //根据数组的长度，分配的内存pBase
     pArr->pBase = (int *) malloc(sizeof(int ) * length);
-    if (NULL == pArr->pBase)
+    if (nullptr == pArr->pBase)
     {
         printf("内存分配失败");
         exit(-1);
@@ -20,7 +19,6 @@ void init_arr(struct Arr *pArr, int length)
     // 内存分配成功
     pArr->len = length;
     pArr->cnt = 0;
-    return;
 }
 // 判断数组空or满
 bool is_empty(struct Arr *pArr)
@@ -93,4 +91,59 @@ bool insert_arr(struct Arr *pArr, int pos, int val)
     // 标记数组有效元素的字段加1
     (pArr->cnt)++;
     return true;
+}
+//删除
+bool delete_arr(struct Arr *pArr, int pos,int *pVal)
+{
+    //判断数组是否已满
+    if(is_full(pArr))
+    {
+        return false;  //满
+    }
+    //判断插入位置是否合法
+    if(pos < 0 || pos > pArr->cnt)
+    {
+        return false;
+    }
+    // 将删除的元素的值赋给传进来的指针变量
+    *pVal = pArr->pBase[pos];
+    // 从到要删除的位置开始，一直到最后一个位置，将数组元素挨个往前移动
+    for (int i = pos; i < pArr->cnt; ++i)
+    {
+        pArr->pBase[i] = pArr->pBase[i+1];
+    }
+    pArr->cnt--;
+    return true;
+}
+//数组倒置   123456 ---> 654321
+void inverse_arr(struct Arr *pArr)
+{
+    int i = 0;
+    int j = pArr->cnt -1;
+    int t;
+    while(i < j)
+    {
+        t = pArr->pBase[i];
+        pArr->pBase[i] = pArr->pBase[j];
+        pArr->pBase[j] = t;
+        ++i;
+        --j;
+    }
+    }
+//数组排序
+void sort_arr(struct Arr *pArr)
+{
+    int i, j, t;
+    for (i = 0; i < pArr->cnt; i++)
+    {
+        for (j = i + 1; j < pArr->cnt; j++)
+        {
+            if (pArr->pBase[i] > pArr->pBase[j])
+            {
+                t = pArr->pBase[i];
+                pArr->pBase[i] = pArr->pBase[j];
+                pArr->pBase[j] = t;
+            }
+        }
+    }
 }
